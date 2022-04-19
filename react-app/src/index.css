@@ -10,4 +10,27 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+.schedule {
+  margin-top: -10px;
+  margin-right: 10px;
+  text-align: right;
+  padding-right: 10px;
+  width: 100px;
+  height: 740px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.6em;
+  box-sizing: border-box;
+  /* background-color: #c1dcec7a; */
+}
+
+.schedule span {
+  font-size: 1rem;
+  color: #000000;
+}
+small {
+  color: #858585;
+  font-size: 0.75rem;
+}
 }
