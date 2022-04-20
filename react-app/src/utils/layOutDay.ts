@@ -32,6 +32,16 @@ export const layOutDay = (events: EventInterface[]) => {
   });
 
 /**
+ * Remove an event from an array of events by id.
+ * @param  {EventInterface[]} events
+ * @param  {Number} id
+ * @return {EventInterface[]}
+ */
+function removeEventById(events: EventInterface[], id: number) {
+  return events.filter(event => event.id !== id);
+}
+
+/**
  * Checks to see if two events collide.
  * @param  {EventInterface} event1
  * @param  {EventInterface} event2
