@@ -20,6 +20,8 @@ function App() {
       <h3 className="header">Daily Calender</h3>
 
       <div className="container">
+        <ClockMap />
+        <Events eventsList={eventsList} />
       </div>
     </div>
   );
