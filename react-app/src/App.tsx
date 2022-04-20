@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 
 import { layOutDay } from './utils/layOutDay';
-import { hourMap } from './utils/hourMap';
 import { events } from './utils/events';
 import { EventInterface } from './@types';
 
+// components
+import ClockMap from './components/ClockMap';
 function App() {
   const [eventsList, setEventsList] = useState<EventInterface[]>([]);
 
@@ -17,31 +18,6 @@ function App() {
       <h3 className="header">Daily Calender</h3>
 
       <div className="container">
-        <div className="schedule">
-          {hourMap.map((hour, index) => {
-            return (
-              <div key={index} className="hour">
-                {index % 2 === 0 ? (
-                  <span>
-                    {index < 5 ? (
-                      <span>
-                        {hour}
-                        <small> AM</small>
-                      </span>
-                    ) : (
-                      <span>
-                        {hour}
-                        <small> PM</small>
-                      </span>
-                    )}
-                  </span>
-                ) : (
-                  <small> {hour} </small> // show half hour
-                )}
-              </div>
-            );
-          })}
-        </div>
 
         <div className="events">
           {eventsList.map(
