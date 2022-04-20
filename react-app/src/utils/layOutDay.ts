@@ -23,6 +23,9 @@ export const layOutDay = (events: EventInterface[]) => {
   // no events - return empty array
   if (!events || events.length === 0) return [];
 
+  // get events with all their collisions
+  getEventsWithAllTheirCollisions(events);
+
 /**
  * Checks to see if two events collide.
  * @param  {EventInterface} event1
@@ -42,3 +45,38 @@ function eventsCollide(event1: EventInterface, event2: EventInterface) {
 
   return false;
 }
+
+/**
+ * The function receives an array of events,
+ * and returns the array of events with each event and its collisions.
+ * @param  {EventInterface[]} events
+ * @return {EventInterface[]}
+ **/
+//  eventsWithAllTheirCollisions
+const getEventsWithAllTheirCollisions = (events: EventInterface[]) => {
+  const allEvents: EventInterface[] = [];
+
+  // Touch each event for setup, add empty array of collisions to events.
+  for (let i = 0; i < events.length; i++) {
+    const event = events[i];
+    event.collisions = [];
+    allEvents.push(event);
+  }
+
+  // Find collisions for each event, and push them to the event's collisions array.
+  while (allEvents.length > 0) {
+    const event = allEvents.shift();
+    if (event === undefined) break;
+
+    for (let j = 0; j < allEvents.length; j++) {
+      const otherEvent = allEvents[j];
+
+      if (eventsCollide(event, otherEvent)) {
+        event.collisions?.push(otherEvent);
+        otherEvent.collisions?.push(event);
+      }
+    }
+  }
+  return events;
+};
+
