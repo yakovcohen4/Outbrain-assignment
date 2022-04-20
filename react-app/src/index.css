@@ -13,15 +13,18 @@ body {
   padding-bottom: 50px;
   background-color: rgba(205, 233, 255, 0.461);
 }
+
+.header {
+  font-size: 2rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 .container {
   display: flex;
   justify-content: center;
   flex-direction: row;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 .schedule {
   margin-top: -10px;
   margin-right: 10px;

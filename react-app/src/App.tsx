@@ -14,6 +14,8 @@ function App() {
 
   return (
     <div className="App">
+      <h3 className="header">Daily Calender</h3>
+
       <div className="container">
         <div className="schedule">
           {hourMap.map((hour, index) => {
