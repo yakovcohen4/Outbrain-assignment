@@ -23,3 +23,22 @@ export const layOutDay = (events: EventInterface[]) => {
   // no events - return empty array
   if (!events || events.length === 0) return [];
 
+/**
+ * Checks to see if two events collide.
+ * @param  {EventInterface} event1
+ * @param  {EventInterface} event2
+ * @return {Boolean}
+ */
+function eventsCollide(event1: EventInterface, event2: EventInterface) {
+  // event2 starts within event1
+  if (event1.start <= event2.start && event1.end >= event2.start) {
+    return true;
+  }
+
+  // event2 ends within event1
+  if (event1.start <= event2.end && event1.end >= event2.end) {
+    return true;
+  }
+
+  return false;
+}
