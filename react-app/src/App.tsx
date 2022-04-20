@@ -14,6 +14,7 @@ function App() {
 
   return (
     <div className="App">
+      <div className="container">
         <div className="schedule">
           {hourMap.map((hour, index) => {
             return (
@@ -67,6 +68,7 @@ function App() {
             }
           )}
         </div>
+      </div>
     </div>
   );
 }
