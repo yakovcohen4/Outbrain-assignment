@@ -31,6 +31,76 @@ export const layOutDay = (events: EventInterface[]) => {
     return a.start - b.start;
   });
 
+  // Calculate width and left position for event based on collision counts.
+  while (sortedEvents.length > 0) {
+    // Take the first event
+    const event = sortedEvents.shift();
+    if (event === undefined) break;
+
+    // no collisions - width is 600 and left is 0
+    if (!event.collisions || !event.collisions.length) {
+      event.left = 0;
+      event.width = 600;
+      break;
+    }
+
+    const eventsCollisions = event.collisions;
+    const eventsCollisionsFirst = eventsCollisions[0] as EventInterface;
+    const eventsCollisionsLength = eventsCollisions?.length;
+
+    let left = 0;
+    // first events collisions have width?
+    // YES: the width - 600 minus (the width of the first collision)
+    // NO: the width - 600 divided (the number of collisions + 1)
+    let width = eventsCollisionsFirst?.width
+      ? 600 - eventsCollisionsFirst?.width
+      : 600 / (eventsCollisionsLength + 1);
+
+    // if there is no left and width, set left and width
+    if (!event.left) {
+      event.left = left;
+    }
+    if (!event.width) {
+      event.width = width;
+    }
+
+    const definedEventCollisions = eventsCollisions.filter(event => {
+      return event.left !== undefined;
+    });
+
+    // Running on all collisions and setting a location for each colliding event
+    for (let index = 1; index < eventsCollisionsLength + 1; index++) {
+      // Take event from the event collision
+      const eventCollision = eventsCollisions[index - 1] as EventInterface;
+
+      // if there is no left, set left
+      if (!eventCollision.left) {
+        if (definedEventCollisions.length > 0) {
+          left = event.left + event.width >= 600 ? 0 : event.left + event.width;
+        } else {
+          left = width * index;
+        }
+        eventCollision.left = left;
+      }
+
+      // if there is no width, set width
+      if (!eventCollision.width) {
+        if (definedEventCollisions.length > 0) {
+          width =
+            eventCollision.left + event.width >= 600
+              ? 600 - width / definedEventCollisions.length
+              : width;
+        }
+        eventCollision.width = width;
+      }
+
+      // Remove event from sortedEvents
+      sortedEvents = removeEventById(sortedEvents, eventCollision.id);
+    }
+  }
+  return events;
+};
+
 /**
  * Remove an event from an array of events by id.
  * @param  {EventInterface[]} events
