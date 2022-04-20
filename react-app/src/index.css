@@ -71,6 +71,14 @@ small {
   margin-left: 10px;
   font-size: 1rem;
   padding: auto;
+  cursor: pointer;
+}
+
+.event:hover {
+  background-color: rgba(220, 220, 220, 0.664);
+  border-left-width: 6px;
+  z-index: 1;
+  transition: all 1s;
 }
 
 .event-information {
@@ -79,7 +87,7 @@ small {
 }
 
 .event-title {
-  padding-top: 8px;
+  padding-top: 4px;
   padding-left: 8px;
   font-weight: bold;
   font-size: 12px;
@@ -93,4 +101,13 @@ small {
   font-size: 10px;
   text-align: left;
   color: #797979;
+}
+
+.no-events {
+  padding-top: 10px;
+  padding-left: 10px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1.5rem;
+  text-align: left;
+  color: #496fa4;
 }
