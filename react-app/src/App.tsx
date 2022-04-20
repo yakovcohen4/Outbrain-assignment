@@ -1,4 +1,5 @@
 import { hourMap } from './utils/hourMap';
+import { events } from './utils/events';
 import { EventInterface } from './@types';
 function App() {
   const [eventsList, setEventsList] = useState<EventInterface[]>([]);
