@@ -26,6 +26,11 @@ export const layOutDay = (events: EventInterface[]) => {
   // get events with all their collisions
   getEventsWithAllTheirCollisions(events);
 
+  // Events are sort by start time, the first event is the earliest event.
+  let sortedEvents = [...events].sort((a, b) => {
+    return a.start - b.start;
+  });
+
 /**
  * Checks to see if two events collide.
  * @param  {EventInterface} event1
