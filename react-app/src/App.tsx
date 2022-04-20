@@ -31,6 +31,34 @@ function App() {
             );
           })}
         </div>
+
+        <div className="events">
+          {eventsList.map(
+            ({ left, width, end, start, title, location }, index) => {
+              return (
+                <div
+                  key={index}
+                  className="event"
+                  style={{
+                    left: left,
+                    width: width,
+                    height: end - start,
+                    top: start,
+                  }}
+                >
+                  <div className="event-information">
+                    <div className="event-title">
+                      {title ? title : 'Sample Item'}
+                    </div>
+                    <span className="event-location">
+                      {location ? location : 'Sample Location'}
+                    </span>
+                  </div>
+                </div>
+              );
+            }
+          )}
+        </div>
     </div>
   );
 }
