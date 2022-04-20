@@ -19,9 +19,9 @@ function Events({ eventsList }: { eventsList: EventInterface[] }) {
           >
             <div className="event-information">
               <div className="event-title">{title ? title : 'Sample Item'}</div>
-              <span className="event-location">
+              <div className="event-location">
                 {location ? location : 'Sample Location'}
-              </span>
+              </div>
             </div>
           </div>
         );
