@@ -5,6 +5,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
+
+.App {
+  padding: 15px 0 0 50px;
+  padding-bottom: 50px;
+  background-color: rgba(205, 233, 255, 0.461);
+}
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }
 
 code {
