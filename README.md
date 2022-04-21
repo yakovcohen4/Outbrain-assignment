@@ -72,4 +72,4 @@ I'm running on the sorted array I created, and taking the first event I get (the
 
 ### Global use - 🌎
 
-- **Test The App - 🔗 [Calender App](https://yakovcohen4.github.io/Outbrain-assignment/)**
+- **Test The App - 🔗 [Calender App](https://yakovcohen4.github.io/Outbrain-assignment/index.html)**
