@@ -5,7 +5,7 @@ function ClockMap() {
     <div className="schedule">
       {hourMap.map((hour, index) => {
         return (
-          <div key={index} className="hour">
+          <div key={index}>
             {index % 2 === 0 ? (
               <span>
                 {index < 5 ? (
