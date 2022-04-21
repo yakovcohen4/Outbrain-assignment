@@ -87,6 +87,7 @@ export const layOutDay = (events: EventInterface[] = []) => {
       // if there is no width, set width
       if (!eventCollision.width) {
         if (definedEventCollisions.length > 0) {
+          // there are defined events - set width by event collision and event position
           width =
             eventCollision.left + event.width >= DEFAULT_WIDTH
               ? DEFAULT_WIDTH - width / definedEventCollisions.length
@@ -118,7 +119,7 @@ function removeEventById(events: EventInterface[], id: number) {
  * @param  {EventInterface} event2
  * @return {Boolean}
  */
-function eventsCollide(event1: EventInterface, event2: EventInterface) {
+export function eventsCollide(event1: EventInterface, event2: EventInterface) {
   const secondEventStartsWithinFirstEvent =
     event1.start <= event2.start && event1.end >= event2.start;
   const secondEventEndWithinFirstEvent =
@@ -134,7 +135,7 @@ function eventsCollide(event1: EventInterface, event2: EventInterface) {
  * @return {EventInterface[]}
  **/
 //  eventsWithAllTheirCollisions
-const getEventsWithAllTheirCollisions = (events: EventInterface[]) => {
+export const getEventsWithAllTheirCollisions = (events: EventInterface[]) => {
   events.map(event => {
     const eventCollisions = events.filter(
       otherEvent =>
@@ -156,7 +157,7 @@ const getEventsWithAllTheirCollisions = (events: EventInterface[]) => {
  * @param  {number} eventWidth
  * @return {number}
  **/
-const getLeftByEventPosition = (
+export const getLeftByEventPosition = (
   DEFAULT_WIDTH: number,
   eventLeft: number,
   eventWidth: number
@@ -184,4 +185,3 @@ export const getWidthByCollisions = (
     ? DEFAULT_WIDTH - eventFirstCollision?.width
     : DEFAULT_WIDTH / (eventCollisionsLength + 1);
 };
-
