@@ -5,9 +5,109 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  padding: 15px 0 0 50px;
+  padding-bottom: 50px;
+  background-color: rgba(205, 233, 255, 0.461);
+}
+
+.header {
+  font-size: 2rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.schedule {
+  margin-top: -10px;
+  margin-right: 10px;
+  text-align: right;
+  padding-right: 10px;
+  width: 100px;
+  height: 740px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.6em;
+  box-sizing: border-box;
+  /* background-color: #c1dcec7a; */
+}
+
+.schedule span {
+  font-size: 1rem;
+  color: #000000;
+}
+small {
+  color: #858585;
+  font-size: 0.75rem;
+}
+
+.events {
+  position: relative;
+  padding: 0px 10px;
+  width: 600px;
+  height: 720px;
+  border-left: #85858599 solid 0.5px;
+  background-color: #ececec;
+}
+
+.event {
+  position: absolute;
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-left-width: 4px;
+  border-color: #d1d1d1;
+  border-left-color: #496fa4;
+  font-size: 0.5em;
+  box-sizing: border-box;
+  margin-left: 10px;
+  font-size: 1rem;
+  padding: auto;
+  cursor: pointer;
+}
+
+.event:hover {
+  background-color: rgba(220, 220, 220, 0.664);
+  border-left-width: 6px;
+  z-index: 1;
+  transition: all 1s;
+}
+
+.event-information {
+  float: left;
+  min-width: 6.5rem;
+}
+
+.event-title {
+  padding-top: 4px;
+  padding-left: 8px;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: left;
+  color: #496fa4;
+}
+
+.event-location {
+  padding-top: 2px;
+  padding-left: 16px;
+  font-size: 10px;
+  text-align: left;
+  color: #797979;
+}
+
+.no-events {
+  padding-top: 10px;
+  padding-left: 10px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1.5rem;
+  text-align: left;
+  color: #496fa4;
 }
