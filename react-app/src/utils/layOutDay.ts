@@ -44,17 +44,17 @@ export const layOutDay = (events: EventInterface[]) => {
       break;
     }
 
-    const eventsCollisions = event.collisions;
-    const eventsCollisionsFirst = eventsCollisions[0] as EventInterface;
-    const eventsCollisionsLength = eventsCollisions?.length;
+    const eventCollisions = event.collisions;
+    const eventFirstCollision = eventCollisions[0] as EventInterface;
+    const eventCollisionsLength = eventCollisions?.length;
 
     let left = 0;
     // first events collisions have width?
     // YES: the width - 600 minus (the width of the first collision)
     // NO: the width - 600 divided (the number of collisions + 1)
-    let width = eventsCollisionsFirst?.width
-      ? 600 - eventsCollisionsFirst?.width
-      : 600 / (eventsCollisionsLength + 1);
+    let width = eventFirstCollision?.width
+      ? 600 - eventFirstCollision?.width
+      : 600 / (eventCollisionsLength + 1);
 
     // if there is no left and width, set left and width
     if (!event.left) {
@@ -64,14 +64,14 @@ export const layOutDay = (events: EventInterface[]) => {
       event.width = width;
     }
 
-    const definedEventCollisions = eventsCollisions.filter(event => {
-      return event.left !== undefined;
-    });
+    const definedEventCollisions = eventCollisions.filter(
+      event => event.left !== undefined
+    );
 
     // Running on all collisions and setting a location for each colliding event
     for (let index = 1; index < eventsCollisionsLength + 1; index++) {
       // Take event from the event collision
-      const eventCollision = eventsCollisions[index - 1] as EventInterface;
+      const eventCollision = eventCollisions[index - 1] as EventInterface;
 
       // if there is no left, set left
       if (!eventCollision.left) {
