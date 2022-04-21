@@ -66,3 +66,54 @@
 - **Is there a maximum bound on the number of events? You can assume a maximum of 100 events for rendering reasons, but your solution should be generalized.**
 - **What browsers need to be supported? Chrome is enough.**
 - **Does my solution need to match the image pixel for pixel? We expect your solution to be very similar to the image in terms of colors, proportions, paddings, and text, but we will not be testing for pixel matching**
+
+---
+
+# My solution 👨‍💻:
+
+The solution starts with the `layOutDay` function and has two parts.
+
+### Part 1 - setup the events:
+
+At the beginning of the function, I call `getEventsWithAllTheirCollisions` function that receives events, and returns the events with each event will have an array `collisions` of all the events it collides with.
+
+- **The Event Collision Testing:** <br> The check for collision is done by `eventsCollide` function, that comparing the start and end time of the events (event2 starts within event1 or event2 ends within event1).
+
+After I get the events with all their collisions, I sort the event by start time, the first event is the earliest event.
+
+### Part 2 - Now we're in the interesting part:
+
+Calculate the width and location left of the event based on a collision count.
+
+I'm running on the sorted array I created, and taking the first event I get (the earliest event).
+
+1. **If the event has no collisions - it is set to left 0, and width 600.**
+
+2. **If the event has collisions - the location is calculated according to the number of collisions. (left- 0, width- number of collisions).**
+
+#### In case 2 - (has collisions):
+
+- I'm running all the collision events of the current event, and updating their location as well.
+
+- Defining the left location is done in the form of a counter, and the width is the same as the width of the current event.
+
+- At the end I remove from the sorted array events the event Collision. (the event that was already defining).
+
+#### Important 🙅‍♂️- Defining a location for an event is done once.
+
+## My Daily Calendar look likes:
+
+![solution](./pic/my-calendar.png)
+
+---
+
+## Run The App
+
+### Local use - 📌
+
+- **Clone this repository**
+- **Run `npm start` on `react-app` directory.**
+
+### Global use - 🌎
+
+- **Test The App - 🔗 [Calender App]()**
