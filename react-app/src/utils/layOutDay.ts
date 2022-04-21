@@ -33,6 +33,8 @@ export const layOutDay = (events: EventInterface[] = []) => {
     return a.start - b.start;
   });
 
+  const DEFAULT_LEFT = 0;
+  const DEFAULT_WIDTH = 600;
   // Calculate width and left position for event based on collision counts.
   while (sortedEvents.length > 0) {
     // Take the first event
@@ -41,13 +43,13 @@ export const layOutDay = (events: EventInterface[] = []) => {
 
     // no collisions - width is 600 and left is 0
     if (!event.collisions || !event.collisions.length) {
-      event.left = 0;
-      event.width = 600;
+      event.left = DEFAULT_LEFT;
+      event.width = DEFAULT_WIDTH;
       break;
     }
 
     const eventCollisions = event.collisions;
-    const eventFirstCollision = eventCollisions[0] as EventInterface;
+    const eventFirstCollision = eventCollisions[0];
     const eventCollisionsLength = eventCollisions?.length;
 
     let left = 0;
@@ -78,7 +80,10 @@ export const layOutDay = (events: EventInterface[] = []) => {
       // if there is no left, set left
       if (!eventCollision.left) {
         if (definedEventCollisions.length > 0) {
-          left = event.left + event.width >= 600 ? 0 : event.left + event.width;
+          left =
+            event.left + event.width >= DEFAULT_WIDTH
+              ? 0
+              : event.left + event.width;
         } else {
           left = width * index;
         }
@@ -89,8 +94,8 @@ export const layOutDay = (events: EventInterface[] = []) => {
       if (!eventCollision.width) {
         if (definedEventCollisions.length > 0) {
           width =
-            eventCollision.left + event.width >= 600
-              ? 600 - width / definedEventCollisions.length
+            eventCollision.left + event.width >= DEFAULT_WIDTH
+              ? DEFAULT_WIDTH - width / definedEventCollisions.length
               : width;
         }
         eventCollision.width = width;
