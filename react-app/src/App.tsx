@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-      <h3 className="header">Daily Calender</h3>
+      <h3 className="header">Daily Calendar</h3>
 
       <div className="container">
         <ClockMap />
