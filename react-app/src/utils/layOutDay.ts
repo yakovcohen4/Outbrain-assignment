@@ -52,13 +52,12 @@ export const layOutDay = (events: EventInterface[] = []) => {
     const eventFirstCollision = eventCollisions[0];
     const eventCollisionsLength = eventCollisions?.length;
 
-    let left = 0;
-    // first events collisions have width?
-    // YES: the width - 600 minus (the width of the first collision)
-    // NO: the width - 600 divided (the number of collisions + 1)
-    let width = eventFirstCollision?.width
-      ? 600 - eventFirstCollision?.width
-      : 600 / (eventCollisionsLength + 1);
+    let left = DEFAULT_LEFT;
+    let width = getWidthByCollisions(
+      DEFAULT_WIDTH,
+      eventCollisionsLength,
+      eventFirstCollision
+    );
 
     // if there is no left and width, set left and width
     if (!event.left) {
@@ -150,3 +149,25 @@ const getEventsWithAllTheirCollisions = (events: EventInterface[]) => {
   });
   return events;
 };
+
+/**
+ * The function calculates the width of an event based on the number of collisions.
+ * first events collisions have width?
+ *      YES: the width - 600 minus (the width of the first collision)
+ *      NO: the width - 600 divided (the number of collisions + 1)
+ *
+ * @param  {number} DEFAULT_WIDTH
+ * @param  {number} eventCollisionsLength
+ * @param  {EventInterface} eventFirstCollision?
+ * @return {number}
+ **/
+export const getWidthByCollisions = (
+  DEFAULT_WIDTH: number,
+  eventCollisionsLength: number,
+  eventFirstCollision?: EventInterface
+): number => {
+  return eventFirstCollision?.width
+    ? DEFAULT_WIDTH - eventFirstCollision?.width
+    : DEFAULT_WIDTH / (eventCollisionsLength + 1);
+};
+
