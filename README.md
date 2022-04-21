@@ -1,6 +1,6 @@
-# Outbrain-assignment
+# Daily Calendar
 
-## Part 1
+<!-- ## Part 1
 
 #### Write a javascript function to lay out a series of events on the calendar for a single day.
 
@@ -65,7 +65,7 @@
 - **Are frameworks allowed? Sure, use what you are comfortable with, except for libraries that solve the exact same problem of placing events in a calendar.**
 - **Is there a maximum bound on the number of events? You can assume a maximum of 100 events for rendering reasons, but your solution should be generalized.**
 - **What browsers need to be supported? Chrome is enough.**
-- **Does my solution need to match the image pixel for pixel? We expect your solution to be very similar to the image in terms of colors, proportions, paddings, and text, but we will not be testing for pixel matching**
+- **Does my solution need to match the image pixel for pixel? We expect your solution to be very similar to the image in terms of colors, proportions, paddings, and text, but we will not be testing for pixel matching** -->
 
 ---
 
@@ -111,7 +111,8 @@ I'm running on the sorted array I created, and taking the first event I get (the
 
 ### Local use - 📌
 
-- **Clone this repository**
+- **Clone the repo - https://github.com/yakovcohen4/Outbrain-assignment.git**
+- **Run `npm i` to install all the dependencies**
 - **Run `npm start` on `react-app` directory.**
 
 ### Global use - 🌎
