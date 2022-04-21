@@ -118,17 +118,12 @@ function removeEventById(events: EventInterface[], id: number) {
  * @return {Boolean}
  */
 function eventsCollide(event1: EventInterface, event2: EventInterface) {
-  // event2 starts within event1
-  if (event1.start <= event2.start && event1.end >= event2.start) {
-    return true;
-  }
+  const secondEventStartsWithinFirstEvent =
+    event1.start <= event2.start && event1.end >= event2.start;
+  const secondEventEndWithinFirstEvent =
+    event1.start <= event2.end && event1.end >= event2.end;
 
-  // event2 ends within event1
-  if (event1.start <= event2.end && event1.end >= event2.end) {
-    return true;
-  }
-
-  return false;
+  return secondEventStartsWithinFirstEvent || secondEventEndWithinFirstEvent;
 }
 
 /**
