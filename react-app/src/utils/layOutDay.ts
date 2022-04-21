@@ -24,7 +24,7 @@ export const layOutDay = (events: EventInterface[]) => {
   if (!events || events.length === 0) return [];
 
   // get events with all their collisions
-  getEventsWithAllTheirCollisions(events);
+  events = getEventsWithAllTheirCollisions(events);
 
   // Events are sort by start time, the first event is the earliest event.
   let sortedEvents = [...events].sort((a, b) => {
@@ -134,29 +134,12 @@ function eventsCollide(event1: EventInterface, event2: EventInterface) {
  **/
 //  eventsWithAllTheirCollisions
 const getEventsWithAllTheirCollisions = (events: EventInterface[]) => {
-  const allEvents: EventInterface[] = [];
-
-  // Touch each event for setup, add empty array of collisions to events.
-  for (let i = 0; i < events.length; i++) {
-    const event = events[i];
-    event.collisions = [];
-    allEvents.push(event);
-  }
-
-  // Find collisions for each event, and push them to the event's collisions array.
-  while (allEvents.length > 0) {
-    const event = allEvents.shift();
-    if (event === undefined) break;
-
-    for (let j = 0; j < allEvents.length; j++) {
-      const otherEvent = allEvents[j];
-
-      if (eventsCollide(event, otherEvent)) {
-        event.collisions?.push(otherEvent);
-        otherEvent.collisions?.push(event);
-      }
-    }
-  }
+  events.map(event => {
+    const eventCollisions = events.filter(
+      otherEvent =>
+        event.id !== otherEvent.id && eventsCollide(event, otherEvent)
+    );
+    event.collisions = eventCollisions || [];
+  });
   return events;
 };
-
