@@ -60,12 +60,8 @@ export const layOutDay = (events: EventInterface[] = []) => {
     );
 
     // if there is no left and width, set left and width
-    if (!event.left) {
-      event.left = left;
-    }
-    if (!event.width) {
-      event.width = width;
-    }
+    event.left = event.left || left;
+    event.width = event.width || width;
 
     const definedEventCollisions = eventCollisions.filter(
       event => event.left !== undefined
@@ -74,7 +70,7 @@ export const layOutDay = (events: EventInterface[] = []) => {
     // Running on all collisions and setting a location for each colliding event
     for (let index = 1; index <= eventCollisionsLength; index++) {
       // Take event from the event collision
-      const eventCollision = eventCollisions[index - 1] as EventInterface;
+      const eventCollision = eventCollisions[index - 1];
 
       // if there is no left, set left
       if (!eventCollision.left) {
