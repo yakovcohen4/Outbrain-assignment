@@ -72,14 +72,13 @@ export const layOutDay = (events: EventInterface[] = []) => {
       // Take event from the event collision
       const eventCollision = eventCollisions[index - 1];
 
-      // if there is no left, set left
+      // if there is no left to event Collision, set left
       if (!eventCollision.left) {
         if (definedEventCollisions.length > 0) {
-          left =
-            event.left + event.width >= DEFAULT_WIDTH
-              ? 0
-              : event.left + event.width;
+          // there are defined events - set left by event position
+          left = getLeftByEventPosition(DEFAULT_WIDTH, event.left, event.width);
         } else {
+          // if not - set left by width * index of event collision
           left = width * index;
         }
         eventCollision.left = left;
@@ -144,6 +143,25 @@ const getEventsWithAllTheirCollisions = (events: EventInterface[]) => {
     event.collisions = eventCollisions || [];
   });
   return events;
+};
+
+/**
+ * The function calculates the left position.
+ * event left + event width is greater than the default width?,
+ *      YES: the left position is 0
+ *      NO: the left position is the event left + event width
+ *
+ * @param  {number} DEFAULT_WIDTH
+ * @param  {number} eventLeft
+ * @param  {number} eventWidth
+ * @return {number}
+ **/
+const getLeftByEventPosition = (
+  DEFAULT_WIDTH: number,
+  eventLeft: number,
+  eventWidth: number
+): number => {
+  return eventLeft + eventWidth >= DEFAULT_WIDTH ? 0 : eventLeft + eventWidth;
 };
 
 /**
