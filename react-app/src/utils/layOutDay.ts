@@ -19,9 +19,11 @@ import { EventInterface } from '../@types';
  * function layOutDay(events) {...}
  **/
 
-export const layOutDay = (events: EventInterface[]) => {
+export const layOutDay = (events: EventInterface[] = []) => {
   // no events - return empty array
-  if (!events || events.length === 0) return [];
+  if (events.length === 0) {
+    return [];
+  }
 
   // get events with all their collisions
   events = getEventsWithAllTheirCollisions(events);
