@@ -69,7 +69,7 @@ export const layOutDay = (events: EventInterface[]) => {
     );
 
     // Running on all collisions and setting a location for each colliding event
-    for (let index = 1; index < eventsCollisionsLength + 1; index++) {
+    for (let index = 1; index <= eventCollisionsLength; index++) {
       // Take event from the event collision
       const eventCollision = eventCollisions[index - 1] as EventInterface;
 
