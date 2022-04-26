@@ -45,7 +45,7 @@ export const layOutDay = (events: EventInterface[] = []) => {
     if (!event.collisions || !event.collisions.length) {
       event.left = DEFAULT_LEFT;
       event.width = DEFAULT_WIDTH;
-      break;
+      continue;
     }
 
     const eventCollisions = event.collisions;
